@@ -1,0 +1,120 @@
+}
+
+/* ── Panels ── */
+.panel {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.media-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.media-wrap {
+  position: relative;
+  background: #000;
+  aspect-ratio: 16 / 9;
+  max-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.media-wrap audio-mode {
+  aspect-ratio: auto;
+}
+
+.media-wrap.is-audio {
+  aspect-ratio: auto;
+  min-height: 120px;
+  background: linear-gradient(160deg, #1a2332, #0f172a);
+}
+
+#mediaEl {
+  width: 100%;
+  height: 100%;
+  max-height: 50vh;
+  object-fit: contain;
+  display: none;
+}
+
+#mediaEl.visible { display: block; }
+
+.media-placeholder {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  color: var(--text-muted);
+}
+
+.media-placeholder .icon { font-size: 2.5rem; margin-bottom: 0.75rem; opacity: 0.7; }
+
+.drop-zone {
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  text-align: center;
+  transition: border-color 0.2s, background 0.2s;
+  cursor: pointer;
+  background: var(--bg-card);
+}
+
+.drop-zone:hover, .drop-zone.dragover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.drop-zone p { color: var(--text-muted); font-size: 0.9rem; margin-top: 0.35rem; }
+.drop-zone strong { color: var(--text); }
+
+.controls-bar {
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border-top: 1px solid var(--border);
+  background: var(--bg-elevated);
+  position: sticky;
+  bottom: 0;
+  z-index: 40;
+}
+
+@media (min-width: 900px) {
+  .controls-bar { position: static; }
+}
+
+.control-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.btn:hover { background: var(--bg-hover); border-color: #4a5d7a; }
+.btn:active { transform: scale(0.97); }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
