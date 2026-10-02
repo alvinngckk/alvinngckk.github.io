@@ -31,7 +31,6 @@
     </div>
 
     <main class="main">
-      <!-- Media column -->
       <section class="panel media-panel">
         <div class="media-wrap" id="mediaWrap">
           <video id="mediaEl" playsinline controls controlsList="nodownload"></video>
@@ -86,7 +85,6 @@
         </div>
       </section>
 
-      <!-- Transcript column -->
       <section class="panel transcript-panel">
         <div class="panel-header">
           <h2 class="panel-title">雙語字幕</h2>
@@ -125,10 +123,10 @@
           </details>
 
           <details open>
-            <summary>貼上網址載入字幕</summary>
+            <summary>貼上網址／YouTube 載入字幕</summary>
             <div class="details-body">
               <div class="url-load-row">
-                <input type="text" class="url-input" inputmode="url" id="captionUrlInput" placeholder="https://…/*.srt 或 *.vtt（亦可相對路徑）" autocomplete="off" spellcheck="false" />
+                <input type="text" class="url-input" inputmode="url" id="captionUrlInput" placeholder="YouTube 連結，或 https://…/*.srt／.vtt" autocomplete="off" spellcheck="false" />
                 <select id="captionUrlLang" class="sel" title="載入後作為">
                   <option value="auto" selected>自動／雙語</option>
                   <option value="en">英文</option>
@@ -136,7 +134,7 @@
                 </select>
                 <button type="button" class="btn btn-sm btn-primary" id="btnLoadUrl">載入</button>
               </div>
-              <p class="hint" id="urlLoadHint">支援直接字幕網址（.srt／.vtt／.txt）與同源相對路徑。若瀏覽器因 CORS 阻擋，請改下載後上傳。無法從 YouTube 影片頁擷取字幕。</p>
+              <p class="hint" id="urlLoadHint">可貼 YouTube 連結（youtube.com／youtu.be），本機後端會用 yt-dlp 拉取英＋繁中字幕（官方或自動）。亦可貼 .srt／.vtt／.txt 網址或相對路徑。若無官方／自動字幕、年齡限制或限流，會顯示錯誤 — 請改上傳字幕檔。</p>
               <p class="hint url-status" id="urlLoadStatus" aria-live="polite"></p>
             </div>
           </details>
@@ -173,7 +171,6 @@
     </main>
   </div>
 
-  <!-- Vocab drawer -->
   <div class="drawer-backdrop" id="drawerBackdrop"></div>
   <aside class="drawer" id="vocabDrawer" aria-label="生詞本">
     <div class="drawer-header">
