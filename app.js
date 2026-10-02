@@ -1,27 +1,22 @@
-/* load full app.js from media-english-study (assembled 49481 bytes) */
+/* load full app.js + styles from media-english-study @ fa92af072c0cef3e151c476cb74b4452f74395e5 */
 (async () => {
-  const src = "https://cdn.jsdelivr.net/gh/alvinngckk/media-english-study@main/app.js";
-  const css = "https://cdn.jsdelivr.net/gh/alvinngckk/media-english-study@main/styles.css";
+  const base = "https://cdn.jsdelivr.net/gh/alvinngckk/media-english-study@fa92af072c0cef3e151c476cb74b4452f74395e5/";
   try {
-    // Prefer repo styles if present; also pull canonical CSS from main app repo
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = css;
-    document.head.appendChild(link);
-    const code = await fetch(src, { cache: "no-cache" }).then((r) => {
-      if (!r.ok) throw new Error(r.status + " " + r.statusText);
-      return r.text();
-    });
+    const cssLink = document.createElement("link");
+    cssLink.rel = "stylesheet";
+    cssLink.href = base + "styles.css";
+    document.head.appendChild(cssLink);
+  } catch (e) { console.warn("css load", e); }
+  try {
+    const res = await fetch(base + "app.js");
+    if (!res.ok) throw new Error("app.js " + res.status);
+    const code = await res.text();
     const s = document.createElement("script");
     s.textContent = code;
-    document.head.appendChild(s);
+    document.body.appendChild(s);
   } catch (e) {
     console.error(e);
-    document.body.insertAdjacentHTML(
-      "afterbegin",
-      "<pre style='color:red;padding:1rem'>Failed to load app from CDN: " +
-        e +
-        "</pre>"
-    );
+    const el = document.getElementById("mainMount");
+    if (el) el.innerHTML = "<p class=\"hint\" style=\"padding:1rem\">無法載入應用（CDN）。請稍後重試或使用已部署後端站。</p>";
   }
 })();
